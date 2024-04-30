@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 void tambah(float angka1, float angka2) {
