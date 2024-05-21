@@ -11,3 +11,26 @@ Seleksi adalah kontrol aliran program yang memungkinkan pengambilan keputusan be
 
 d.Fungsi:
 Fungsi adalah blok kode yang diberi nama dan dirancang untuk melakukan tugas tertentu. Fungsi memungkinkan pengorganisasian kode menjadi unit-unit modular yang dapat dipanggil berulang kali dengan memberikan input dan menerima output. 
+
+3.Looping statement
+for(i = 1; i <= n; i++) {
+    // Blok kode yang akan diulang sebanyak n kali
+}
+(i = 1): Dimulai dengan i sama dengan 1.
+(i <= n): Loop akan terus berjalan selama i kurang dari atau sama dengan n.
+(i++): Pada akhir setiap iterasi, i akan ditambah 1.
+
+Jika n adalah 5, visualisasi prosesnya adalah sebagai berikut:
+
+Baris 1: 4 spasi + 1 titik
+Baris 2: 3 spasi + 2 titik
+Baris 3: 2 spasi + 3 titik
+Baris 4: 1 spasi + 4 titik
+Baris 5: 0 spasi + 5 titik
+
+OUTPUTNYA
+    *
+   **
+  ***
+ ****
+*****
