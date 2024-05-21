@@ -20,14 +20,6 @@ for(i = 1; i <= n; i++) {
 (i <= n): Loop akan terus berjalan selama i kurang dari atau sama dengan n.
 (i++): Pada akhir setiap iterasi, i akan ditambah 1.
 
-Jika n adalah 5, visualisasi prosesnya adalah sebagai berikut:
-
-Baris 1: 4 spasi + 1 titik
-Baris 2: 3 spasi + 2 titik
-Baris 3: 2 spasi + 3 titik
-Baris 4: 1 spasi + 4 titik
-Baris 5: 0 spasi + 5 titik
-
 OUTPUTNYA
     *
    **
