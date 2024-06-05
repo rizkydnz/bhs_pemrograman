@@ -1,0 +1,36 @@
+@startuml
+
+rectangle "Bisnis Ikan Hias" {
+    rectangle "Analisis Pasar" {
+        - Segmentasi Pasar
+        - Tren Pasar
+        - Pesanan Khusus
+    }
+    rectangle "Suplai dan Distribusi" {
+        - Pemasok
+        - Distribusi
+    }
+    rectangle "Produk dan Layanan" {
+        - Varietas
+        - Konsultasi
+    }
+    rectangle "Rencana Pemasaran" {
+        - Media Sosial
+        - Kemitraan
+    }
+    rectangle "Infrastruktur dan Peralatan" {
+        - Kolam dan Tangki
+        - Perlengkapan
+    }
+    rectangle "Keuangan" {
+        - Investasi Awal
+        - Pendapatan
+        - Biaya Operasional
+    }
+    rectangle "Legalitas dan Perizinan" {
+        - Peraturan
+        - Perizinan
+    }
+}
+
+@enduml
