@@ -1,64 +1,96 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
 using namespace std;
 
-class Customer {
-public:
-    string name;
-    string need;
-
-    Customer(const string& n, const string& nd) : name(n), need(nd) {}
-};
-
-class Product {
-public:
-    string name;
-    string category;
-
-    Product(const string& n, const string& c) : name(n), category(c) {}
-};
-
-class Business {
+// Kelas untuk merepresentasikan ikan hias
+class IkanHias {
 private:
-    vector<Customer> customers;
-    vector<Product> products;
-
+    string jenis;
+    int harga;
+    int stok;
 public:
-    void addCustomer(const string& name, const string& need) {
-        customers.emplace_back(name, need);
+    IkanHias(string j, int h, int s) : jenis(j), harga(h), stok(s) {}
+    string getJenis() const { return jenis; }
+    int getHarga() const { return harga; }
+    int getStok() const { return stok; }
+    void setStok(int s) { stok = s; }
+    void display() const {
+        cout << "Jenis: " << jenis << ", Harga: " << harga << " IDR, Stok: " << stok << endl;
     }
+};
 
-    void addProduct(const string& name, const string& category) {
-        products.emplace_back(name, category);
+// Kelas untuk manajemen inventaris ikan hias
+class InventarisIkan {
+private:
+    vector<IkanHias> inventaris;
+public:
+    void tambahIkan(const IkanHias& ikan) {
+        inventaris.push_back(ikan);
     }
-
-    void recommendProducts() {
-        for (const auto& customer : customers) {
-            cout << "Recommendations for " << customer.name << " (" << customer.need << "):\n";
-            for (const auto& product : products) {
-                if (product.category == customer.need) {
-                    cout << "- " << product.name << "\n";
+    void tampilkanInventaris() const {
+        cout << "=== Inventaris Ikan Hias ===" << endl;
+        for (const auto& ikan : inventaris) {
+            ikan.display();
+        }
+        cout << endl;
+    }
+    void jualIkan(string jenis, int jumlah) {
+        for (auto& ikan : inventaris) {
+            if (ikan.getJenis() == jenis) {
+                if (jumlah <= ikan.getStok()) {
+                    ikan.setStok(ikan.getStok() - jumlah);
+                    cout << "Berhasil menjual " << jumlah << " ekor " << jenis << endl;
+                    return;
+                } else {
+                    cout << "Stok " << jenis << " tidak mencukupi." << endl;
+                    return;
                 }
             }
-            cout << endl;
         }
+        cout << "Tidak ada " << jenis << " di inventaris." << endl;
     }
 };
 
 int main() {
-    Business myBusiness;
+    // Inisialisasi inventaris
+    InventarisIkan inventarisIkan;
+    inventarisIkan.tambahIkan(IkanHias("Koi", 50000, 10));
+    inventarisIkan.tambahIkan(IkanHias("Discus", 80000, 5));
+    inventarisIkan.tambahIkan(IkanHias("Arwana", 1200000, 3));
 
-    myBusiness.addCustomer("Alice", "Electronics");
-    myBusiness.addCustomer("Bob", "Books");
+    // Menu aplikasi
+    int pilihan;
+    do {
+        cout << "=== Aplikasi Manajemen Ikan Hias ===" << endl;
+        cout << "1. Tampilkan Inventaris" << endl;
+        cout << "2. Jual Ikan" << endl;
+        cout << "3. Keluar" << endl;
+        cout << "Pilihan: ";
+        cin >> pilihan;
 
-    myBusiness.addProduct("Smartphone", "Electronics");
-    myBusiness.addProduct("Laptop", "Electronics");
-    myBusiness.addProduct("Novel", "Books");
-    myBusiness.addProduct("Comics", "Books");
-
-    myBusiness.recommendProducts();
+        switch (pilihan) {
+            case 1:
+                inventarisIkan.tampilkanInventaris();
+                break;
+            case 2: {
+                string jenisIkan;
+                int jumlah;
+                cout << "Jenis Ikan: ";
+                cin >> jenisIkan;
+                cout << "Jumlah: ";
+                cin >> jumlah;
+                inventarisIkan.jualIkan(jenisIkan, jumlah);
+                break;
+            }
+            case 3:
+                cout << "Terima kasih telah menggunakan aplikasi." << endl;
+                break;
+            default:
+                cout << "Pilihan tidak valid." << endl;
+                break;
+        }
+    } while (pilihan != 3);
 
     return 0;
 }
