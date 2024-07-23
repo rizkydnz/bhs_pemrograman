@@ -116,10 +116,10 @@ import mysql.connector
 
 // Membuat koneksi ke database
 conn = mysql.connector.connect(
-    host="localhost",    # Ganti dengan host database Anda
-    user="root",         # Ganti dengan username database Anda
-    password="password", # Ganti dengan password database Anda
-    database="testdb"    # Ganti dengan nama database Anda
+    host="localhost",    // Ganti dengan host database Anda
+    user="root",         // Ganti dengan username database Anda
+    password="password", // Ganti dengan password database Anda
+    database="testdb"    // Ganti dengan nama database Anda
 )
 
 cursor = conn.cursor()
